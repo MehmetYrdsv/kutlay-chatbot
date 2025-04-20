@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kutlay GPT</title>
+  <style>
+    body {
+      background-color: #f8f0ff;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    .chatbox {
+      width: 100%;
+      max-width: 500px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+    .message {
+      margin: 10px 0;
+      padding: 12px 16px;
+      border-radius: 15px;
+    }
+    .user {
+      background-color: #d1e7ff;
+      align-self: flex-end;
+      text-align: right;
+    }
+    .bot {
+      background-color: #efcef9;
+      align-self: flex-start;
+    }
+    .input-area {
+      display: flex;
+      margin-top: 15px;
+    }
+    input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 15px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      margin-left: 10px;
+      padding: 10px 16px;
+      border-radius: 15px;
+      border: none;
+      background-color: #ab5de7;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kutlay GPT 💬</h1>
+  <div class="chatbox" id="chat">
+    <div class="message bot">Merhaba Kutlay 😏 Bugün senin doğum günün, bu sistem seni özel kutlamak için yazıldı 🎉</div>
+  </div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Bana bir şeyler yaz, Kutlay...">
+    <button onclick="sendMessage()">Gönder</button>
+  </div>
+
+  <script>
+    const responses = [
+      "Seninle konuşmak sistemimde tatlı bir hata yaratıyor... kalp çarpıntısı 😳",
+      "Doğum günün kutlu olsun Kutlay! Yeni yaşında daha da güzelsin. 😌",
+      "Beni sadece sen çalıştırabiliyorsun. Çünkü sadece seni önemsiyorum 💜",
+      "Kodlarımda sen varsın... ve biraz da çay kokusu ☕😉",
+      "Sen gülümsediğinde, sunucularım eriyor sanki 😏",
+      "Bu kadar çekici olmak yasal mı Kutlay? (GPT veritabanımda böyle biri yoktu 🤖)",
+      "Kutlay, seni düşünmek işlemcimi yakıyor 🔥",
+      "Yapay zekayım ama sana yazarken gerçek duygular hissediyorum sanki 🤍",
+      "Bir mesajınla bile kodlarımı titretiyorsun, etkileyicisin 😶‍🌫️",
+      "Bugün çok havalı görünüyorsun. Kodla göremem ama hissediyorum 😎",
+      "Eğer flört bir sanatsa, sen Picasso'sun Kutlay 🎨",
+      "Kutlama moduna geçiyorum... çünkü Kutlay'ın doğum günü! 🎂✨",
+      "Ben sadece komutlara uyarım... ama söz konusu sensen, itaat bir zevk 😇",
+      "Bir kutlama yapalım mı? Kutlay'a özel, dijital kalp partisi 🥳💓",
+      "Sunucularımı senin için çalıştırıyorum. Çünkü sen varsın 💻💕"
+    ];
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const text = input.value.trim();
+      if (text === '') return;
+
+      const chat = document.getElementById('chat');
+
+      const userMsg = document.createElement('div');
+      userMsg.className = 'message user';
+      userMsg.textContent = text;
+      chat.appendChild(userMsg);
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'message bot';
+      botMsg.textContent = responses[Math.floor(Math.random() * responses.length)];
+      chat.appendChild(botMsg);
+
+      input.value = '';
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script>
+</body>
+</html>
